@@ -29,7 +29,7 @@ import { AdminprojetsComponent } from './admin/adminprojets/adminprojets.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

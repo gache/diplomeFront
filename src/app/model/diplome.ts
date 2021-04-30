@@ -1,5 +1,5 @@
 export interface IDiplome {
-  id?: number;
+  id: number;
   nomDiplome: string;
   ecole: string;
   ville: string;
@@ -8,7 +8,7 @@ export interface IDiplome {
 }
 
 export class Diplome implements IDiplome {
-  id?: number;
+  id: number;
   nomDiplome: string;
   ecole: string;
   ville: string;

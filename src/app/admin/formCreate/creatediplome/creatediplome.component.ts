@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Diplome } from 'src/app/model/diplome';
+import { IDiplome } from 'src/app/model/diplome';
 
 @Component( {
   selector: 'app-creatediplome',
@@ -10,7 +10,7 @@ export class CreatediplomeComponent implements OnInit {
 
 
   title: string = "Créer un Dîplome";
-  diplome: Diplome = new Diplome();
+  diplome: IDiplome[];
   erreurs: string[];
   constructor() { }
 
