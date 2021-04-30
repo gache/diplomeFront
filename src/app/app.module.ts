@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { FooterComponent } from './footer/footer.component';
@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { AdmindiplomeComponent } from './admin/admindiplome/admindiplome.component';
 import { AdminnavbarComponent } from './admin/adminnavbar/adminnavbar.component';
 import { AdminprojetsComponent } from './admin/adminprojets/adminprojets.component';
+import { CreatediplomeComponent } from './admin/formCreate/creatediplome/creatediplome.component';
 
 
 @NgModule( {
@@ -23,6 +24,7 @@ import { AdminprojetsComponent } from './admin/adminprojets/adminprojets.compone
     AdminnavbarComponent,
     AdminprojetsComponent,
     FooterComponent,
+    CreatediplomeComponent
 
   ],
   imports: [
@@ -30,6 +32,7 @@ import { AdminprojetsComponent } from './admin/adminprojets/adminprojets.compone
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

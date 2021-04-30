@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IDiplome } from 'src/app/model/diplome';
+import { Diplome } from 'src/app/model/diplome';
 import { DiplomeService } from 'src/app/service/diplome.service';
 
 @Component( {
@@ -8,7 +8,7 @@ import { DiplomeService } from 'src/app/service/diplome.service';
   styleUrls: ['./admindiplome.component.css']
 } )
 export class AdmindiplomeComponent implements OnInit {
-  listDiplomes: IDiplome[];
+  listDiplomes: Diplome[];
   constructor( private diplomeService: DiplomeService ) { }
 
   ngOnInit (): void {

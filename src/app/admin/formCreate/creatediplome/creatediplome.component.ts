@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IDiplome } from 'src/app/model/diplome';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Diplome } from 'src/app/model/diplome';
+import { DiplomeService } from '../../../service/diplome.service';
+
 
 @Component( {
   selector: 'app-creatediplome',
@@ -10,17 +13,21 @@ export class CreatediplomeComponent implements OnInit {
 
 
   title: string = "Créer un Dîplome";
-  diplome: IDiplome[];
+  public diplome: Diplome = new Diplome();
   erreurs: string[];
-  constructor() { }
+  constructor( private diplomeService: DiplomeService,
+    private router: Router, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit (): void {
   }
 
 
   public create (): void {
-    console.log( "hello depuis create" );
     console.log( this.diplome );
+
+    this.diplomeService.create( this.diplome ).subscribe(
+      respo => this.router.navigate( ['diplomesAdmin'] )
+    )
 
 
   }

@@ -7,11 +7,11 @@ import { CreatediplomeComponent } from './admin/formCreate/creatediplome/created
 const routes: Routes = [
   { path: 'diplomesAdmin', component: AdmindiplomeComponent },
   { path: 'projetsAdmin', component: AdminprojetsComponent },
-  { path: 'formCreateDiplome', component: CreatediplomeComponent },
+  { path: 'diplomesAdmin/formCreateDiplome', component: CreatediplomeComponent },
 ];
 
 @NgModule( {
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot( routes, { relativeLinkResolution: 'legacy' } )],
   exports: [RouterModule]
 } )
 export class AppRoutingModule { }
