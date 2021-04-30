@@ -26,9 +26,15 @@ export class DiplomeService {
     );
   }
 
-  create ( diplome: Diplome ): Observable<Diplome> {
+  public create ( diplome: Diplome ): Observable<Diplome> {
     return this.Http.post<Diplome>( this.url, diplome, { headers: this.httpHeaders } )
   }
+
+  public getDiplome(id): Observable<Diplome> {
+    return this.Http.get<Diplome>(`${this.url}/${id}`)
+  }
+
+
 
 
 }

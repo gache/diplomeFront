@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'diplomesAdmin', component: AdmindiplomeComponent },
   { path: 'projetsAdmin', component: AdminprojetsComponent },
   { path: 'diplomesAdmin/formCreateDiplome', component: CreatediplomeComponent },
+  { path: 'diplomesAdmin/formCreateDiplome/:id', component: CreatediplomeComponent },
 ];
 
 @NgModule( {
