@@ -2,7 +2,7 @@
     <div class="card ">
         <div class="card-header text-center bg-dark text-white "> {{ title }} </div>
         <div class="card-body ">
-            <form (ngSubmit)="create()">
+            <form>
                 <div class="form-group row">
                     <label for="nomDiplome" class="col-2 col-form-label">Dîplome</label>
                     <div class="col-sm-8">
@@ -35,7 +35,11 @@
                 <div class="form-group row">
                     <label class="col-2 col-form-label">&nbsp;</label>
                     <div class="input-group col-md-8">
-                        <button type="submit" class="btn btn-outline-primary btn-block">Enregistrer</button>
+                        <button type="submit" class="btn btn-outline-primary btn-block" (click)="create()" *ngIf="!diplome.id else elseBlock">Enregistrer</button>
+                        <ng-template #elseBlock>
+                            <button class="btn btn-outline-primary btn-block " role="button" (click)="update()">Modifier</button>
+                        </ng-template>
+
                     </div>
                 </div>
             </form>
