@@ -38,19 +38,17 @@ export class CreatediplomeComponent implements OnInit {
       if ( id ) {
         this.diplomeService.getDiplome( id ).subscribe( ( diplomeID ) => this.diplome = diplomeID );
       }
-    } )
+    } );
   }
 
   public update (): void {
     this.diplomeService.update( this.diplome ).subscribe(
       diplome => {
         this.router.navigate( ['diplomesAdmin'] );
-        swal.fire( 'Dîplome actualiser', `Diplome ${this.diplome.nomDiplome} a été actualiser avec satisfaction` )
+        swal.fire( 'Dîplome actualiser', `Le Diplome ${this.diplome.nomDiplome} a été actualiser avec satisfaction`, 'success' );
       }
-    )
+    );
   }
-
-
 
 
 }

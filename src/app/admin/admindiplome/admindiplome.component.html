@@ -21,10 +21,10 @@
                         <td>{{ item.nomDiplome }}</td>
                         <td>{{ item.description }}</td>
                         <td>
-                            <button class="btn btn-sm btn-outline-success" [routerLink]="['/diplomesAdmin/formCreateDiplome', item.id]"><i class="far fa-edit"></i></button>
+                            <button class="btn btn-sm btn-outline-success" name="madifier" [routerLink]="['/diplomesAdmin/formCreateDiplome', item.id]"><i class="far fa-edit"></i></button>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-outline-danger">
+                            <button class="btn btn-sm btn-outline-danger" name="eliminer" (click)='delete(item)'>
               <i class="far fa-trash-alt"></i>
             </button>
                         </td>

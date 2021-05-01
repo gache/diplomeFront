@@ -27,16 +27,22 @@ export class DiplomeService {
   }
 
   public create ( diplome: Diplome ): Observable<Diplome> {
-    return this.Http.post<Diplome>( this.url, diplome, { headers: this.httpHeaders } )
+    return this.Http.post<Diplome>( this.url, diplome, { headers: this.httpHeaders } );
   }
 
   public getDiplome ( id ): Observable<Diplome> {
-    return this.Http.get<Diplome>( `${this.url}/${id}` )
+    return this.Http.get<Diplome>( `${this.url}/${id}` );
   }
 
   public update ( diplome: Diplome ): Observable<Diplome> {
-    return this.Http.put<Diplome>( `${this.url}/${diplome.id}`, diplome, { headers: this.httpHeaders } )
+    return this.Http.put<Diplome>( `${this.url}/${diplome.id}`, diplome, { headers: this.httpHeaders } );
   }
+
+  public delete ( id: number ): Observable<Diplome> {
+    return this.Http.delete<Diplome>( `${this.url}/${id}`, { headers: this.httpHeaders } );
+  }
+
+
 
 
 
