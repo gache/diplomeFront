@@ -6,7 +6,10 @@
       Créer Dîplome
     </button>
             <hr>
-            <table class="table table-hover">
+            <div *ngIf="listDiplomes?.length == 0" class="alert alert-info">
+                <p class="text-center display-1"> Pas de registre dans la bases de données !</p>
+            </div>
+            <table class="table table-hover" *ngIf="listDiplomes?.length > 0">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col" class="text-center">Id</th>
