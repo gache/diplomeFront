@@ -1,7 +1,8 @@
+import  swal  from 'sweetalert2';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Diplome } from '../model/diplome';
 import { map, catchError, tap } from 'rxjs/operators';
 
@@ -31,7 +32,14 @@ export class DiplomeService {
   }
 
   public getDiplome ( id ): Observable<Diplome> {
-    return this.Http.get<Diplome>( `${this.url}/${id}` );
+    return this.Http.get<Diplome>( `${this.url}/${id}` ).pipe(
+      catchError( e => {
+        this.router.navigate(['diplomesAdmin'])
+        console.log(e.error.message);
+        swal.fire("Erreur au moment de l'edition", e.error.message, 'error');
+        return throwError(e)
+      })
+    );
   }
 
   public update ( diplome: Diplome ): Observable<Diplome> {
