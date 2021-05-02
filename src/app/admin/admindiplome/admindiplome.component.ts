@@ -27,24 +27,22 @@ export class AdmindiplomeComponent implements OnInit {
       buttonsStyling: false
     } );
     swalWithBootstrapButtons.fire( {
-      title: 'Está seguro?',
-      text: `¿Seguro que desea elminar el perfil de ${diplome.nomDiplome} ${diplome.ecole}
-      `,
+      title: 'Vous êtes sûr ?',
+      text: `Vous souhaitez eliminer le Dîplome ${diplome.nomDiplome} à école ${diplome.ecole} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, eliminar!',
-      cancelButtonText: 'No, cancelar!',
+      confirmButtonText: 'Oui, Eliminer!',
+      cancelButtonText: 'Non, Cancel!',
       reverseButtons: true
     } ).then( ( result ) => {
       if ( result.value ) {
         this.diplomeService.delete( diplome.id ).subscribe(
           response => {
-            // Con lo siguiente se actualiza la lista de empleados
-            this.listDiplomes = this.listDiplomes.filter( diplome => diplome !== diplome );
+            this.listDiplomes = this.listDiplomes.filter( diplo => diplo !== diplome );
           } );
         swalWithBootstrapButtons.fire(
-          'Perfil eliminado!',
-          `El perfil ${diplome.description} fue eliminado con éxito.`,
+          'Dîplome eliminer!',
+          `Le Dîplome ${diplome.description} a été eliminer avec satisfaction`,
           'success'
         )
       }
