@@ -28,7 +28,7 @@ export class CreatediplomeComponent implements OnInit {
     console.log( this.diplome );
     this.diplomeService.create( this.diplome ).subscribe( respon => {
       this.router.navigate( ['diplomesAdmin'] )
-      swal.fire( 'Nouveau Dîplome', `Dîplome ${this.diplome.nomDiplome} a été créer avec satisfaction`, 'success' )
+      swal.fire( 'Nouveau Dîplome', `Dîplome ${this.diplome.nomDiplome} a été créé avec satisfaction`, 'success' )
     } );
   }
 
@@ -45,7 +45,7 @@ export class CreatediplomeComponent implements OnInit {
     this.diplomeService.update( this.diplome ).subscribe(
       diplome => {
         this.router.navigate( ['diplomesAdmin'] );
-        swal.fire( 'Dîplome actualiser', `Le Diplome ${this.diplome.nomDiplome} a été actualiser avec satisfaction`, 'success' );
+        swal.fire( 'Dîplome actualiser', `Le Diplome ${this.diplome.nomDiplome} a été actualisé avec satisfaction`, 'success' );
       }
     );
   }
