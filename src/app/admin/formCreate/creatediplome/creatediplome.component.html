@@ -1,14 +1,13 @@
-<div class="container mt-5 py-5 " style="width: 50%;">
-  <div class="card ">
-    <div class="card-header text-center bg-dark text-white "> {{ title }} </div>
-    <div class="card-body ">
-      <form #diplomeForm="ngForm">
-        <div class="form-group row">
-          <label for="nomDiplome" class="col-2 col-form-label">Dîplome</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="nomDiplome" id="nomDiplome" placeholder=" Master 2" autofocus
-              [(ngModel)]="diplome.nomDiplome" required minlength="4" #diplomeMessage="ngModel">
-            <div class="alert  alert-danger"
+<div class="container mt-5 py-5 " style="width: 70%;">
+    <div class="card ">
+        <div class="card-header text-center bg-dark text-white "> {{ title }} </div>
+        <div class="card-body ">
+            <form #diplomeForm="ngForm">
+                <div class="form-group row">
+                    <label for="nomDiplome" class="col-2 col-form-label">Dîplome</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="nomDiplome" id="nomDiplome" placeholder=" Master 2" autofocus [(ngModel)]="diplome.nomDiplome" required minlength="4" #diplomeMessage="ngModel">
+                        <!-- <div class="alert  alert-danger"
               *ngIf="diplomeMessage.invalid && (diplomeMessage.dirty || diplomeMessage.touched)">
               <div *ngIf="diplomeMessage.errors.required">
                 <p>Le nom du Dîplome est nécessaire </p>
@@ -16,59 +15,61 @@
               <div *ngIf="diplomeMessage.errors.minlength">
                 <p>Le nom du Dîplome a besoin minimun 4 caractère </p>
               </div>
-            </div>
-          </div>
+            </div> -->
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <label for="ecole" class="col-form-label col-sm-2"> Ecole</label>
+                    <div class="col-sm-8 ">
+                        <input type="text" class="form-control" name="ecole" placeholder="Université de Lille" id="ecole" [(ngModel)]="diplome.ecole" required #ecoleValidation="ngModel">
+                        <!-- <div class="alert  alert-danger" *ngIf="ecoleValidation.invalid && (ecoleValidation.dirty || ecoleValidation.touched)">
+                            <div *ngIf="ecoleValidation.errors.required">
+                                <p>Le nom d'ecole est nécessaire </p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="email" class="col-form-label col-sm-2"> Email</label>
+                    <div class="col-sm-8 ">
+                        <input type="email" class="form-control" name="email" placeholder="lille@gmail.com" id="email" [(ngModel)]="diplome.email" required #ecoleValidation="ngModel">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ville" class="col-form-label col-sm-2"> Ville</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="ville" placeholder="Lille" id="ville" [(ngModel)]="diplome.ville" required #ville="ngModel">
+                        <!-- <div class="alert  alert-danger" *ngIf="ville.invalid && (ville.dirty || ville.touched)">
+                            <div *ngIf="ville.errors.required">
+                                <p>La ville est nécessaire </p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <label for="description" class="col-form-label col-sm-2 py-5 mt-5"> Description</label>
+
+                    <div class="col-sm-8">
+                        <textarea name="message" cols="30" rows="10" maxlength="1000" placeholder="Message... " class="form-control" name="description" id="description" [(ngModel)]="diplome.description" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">&nbsp;</label>
+                    <div class="input-group col-md-8">
+                        <button type="submit" class="btn btn-outline-primary btn-block" (click)="create()" *ngIf="!diplome.id else elseBlock">Enregistrer</button>
+                        <ng-template #elseBlock>
+                            <button class="btn btn-outline-primary btn-block " role="button" (click)="update()">Modifier</button>
+                        </ng-template>
+
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div class="form-group row ">
-          <label for="ecole" class="col-form-label col-sm-2"> Ecole</label>
-          <div class="col-sm-8 ">
-            <input type="text" class="form-control" name="ecole" placeholder="Université de Lille" id="ecole"
-              [(ngModel)]="diplome.ecole" required #ecoleValidation="ngModel">
-              <div class="alert  alert-danger"
-              *ngIf="ecoleValidation.invalid && (ecoleValidation.dirty || ecoleValidation.touched)">
-              <div *ngIf="ecoleValidation.errors.required">
-                <p>Le nom d'ecole est nécessaire </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="form-group row">
-          <label for="ville" class="col-form-label col-sm-2"> Ville</label>
-
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="ville" placeholder="Lille" id="ville"
-              [(ngModel)]="diplome.ville" required #ville="ngModel">
-              <div class="alert  alert-danger"
-              *ngIf="ville.invalid && (ville.dirty || ville.touched)">
-              <div *ngIf="ville.errors.required">
-                <p>La ville est nécessaire </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group row ">
-          <label for="description" class="col-form-label col-sm-2 py-5 mt-5"> Description</label>
-
-          <div class="col-sm-8">
-            <textarea name="message" cols="30" rows="10" maxlength="1000" placeholder="Message... " class="form-control"
-              name="description" id="description" [(ngModel)]="diplome.description" required></textarea>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-2 col-form-label">&nbsp;</label>
-          <div class="input-group col-md-8">
-            <button type="submit" class="btn btn-outline-primary btn-block" (click)="create()"
-              *ngIf="!diplome.id else elseBlock" [disabled]="!diplomeForm.form.valid" >Enregistrer</button>
-            <ng-template #elseBlock>
-              <button class="btn btn-outline-primary btn-block " role="button" (click)="update()" [disabled]="!diplomeForm.form.valid">Modifier</button>
-            </ng-template>
-
-          </div>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
+
+<!-- [disabled]="!diplomeForm.form.valid" enregistrer 
+    [disabled]="!diplomeForm.form.valid" modifier -->

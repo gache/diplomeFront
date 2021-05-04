@@ -26,10 +26,18 @@ export class CreatediplomeComponent implements OnInit {
 
   public create (): void {
     console.log( this.diplome );
-    this.diplomeService.create( this.diplome ).subscribe( respon => {
-      this.router.navigate( ['diplomesAdmin'] )
-      swal.fire( 'Nouveau Dîplome', `Dîplome ${this.diplome.nomDiplome} a été créé avec satisfaction`, 'success' )
-    } );
+    this.diplomeService.create( this.diplome )
+      .subscribe(
+        respon => {
+          this.router.navigate( ['/diplomesAdmin'] );
+          swal.fire( 'Nouveau Dîplome', `Dîplome ${this.diplome.nomDiplome} a été créé avec satisfaction`, 'success' )
+        },
+        err => {
+          this.erreurs = err.error.errors as string[];
+          console.error( 'Code erreur depuis le backend: ' + err.status );
+          console.log( err.error.errors );
+        }
+      );
   }
 
   public chargerDiplome (): void {

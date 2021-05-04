@@ -1,4 +1,4 @@
-import  swal  from 'sweetalert2';
+import swal from 'sweetalert2';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -27,19 +27,33 @@ export class DiplomeService {
     );
   }
 
-  public create ( diplome: Diplome ): Observable<Diplome> {
-    return this.Http.post<Diplome>( this.url, diplome, { headers: this.httpHeaders } );
-  }
 
   public getDiplome ( id ): Observable<Diplome> {
     return this.Http.get<Diplome>( `${this.url}/${id}` ).pipe(
       catchError( e => {
-        this.router.navigate(['diplomesAdmin'])
-        console.log(e.error.message);
-        swal.fire("Erreur au moment de l'edition", e.error.message, 'error');
-        return throwError(e)
-      })
+        if ( e.status != 401 && e.error.message ) {
+          this.router.navigate( ['diplomesAdmin'] )
+          console.log( e.error.message );
+          swal.fire( "Erreur au moment de l'edition", e.error.message, 'error' );
+        }
+        return throwError( e )
+      } )
     );
+  }
+
+  public create ( diplome: Diplome ): Observable<Diplome> {
+    return this.Http.post<any>( this.url, diplome, { headers: this.httpHeaders } )
+      .pipe(
+        map( ( response: any ) => response.diplome as Diplome ),
+        catchError( e => {
+          if ( e.status == 400 ) {
+            return throwError( e );
+          }
+          console.error( e.error.errors );
+          swal.fire( e.error.message, e.error.errors, 'error' );
+          return throwError( e );
+
+        } ) );
   }
 
   public update ( diplome: Diplome ): Observable<Diplome> {
